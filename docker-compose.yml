@@ -8,6 +8,8 @@ services:
       - ./frontend:/app
     ports:
       - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:5001
     command: sh -c "npm install && npm run dev"
     depends_on:
       - backend
@@ -18,5 +20,19 @@ services:
     volumes:
       - ./backend:/app
     ports:
-      - "5000:5000"
-    command: sh -c "npm install && npm run dev" 
+      - "5001:5000"
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/todolist
+    command: sh -c "npm install && npm run dev"
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data: 

@@ -30,6 +30,8 @@ lint:
 
 test:
   stage: test
+  services:
+    - mongo:latest
   script:
     - cd backend
     - npm install
