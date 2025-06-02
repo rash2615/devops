@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
-import About from './pages/About';
-import Contact from './pages/Contact';
+import Calendar from './pages/Calendar';
+import Team from './pages/Team';
+import Analytics from './pages/Analytics';
 import { useState, useEffect } from 'react';
 import TaskList from './components/TaskList';
 import TaskForm from './components/TaskForm';
@@ -47,17 +48,19 @@ function App() {
 
   return (
     <Router>
-      <div style={{ display: 'flex' }}>
-        <Sidebar />
-        <main style={{ flex: 1, padding: '20px' }}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-          <TaskList tasks={tasks} loading={loading} error={error} />
-          <TaskForm addTask={addTask} />
-        </main>
+      <div className="min-h-screen bg-gray-50">
+        <Header />
+        <div className="flex">
+          <Sidebar />
+          <main className="flex-1 p-8">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/calendar" element={<Calendar />} />
+              <Route path="/team" element={<Team />} />
+              <Route path="/analytics" element={<Analytics />} />
+            </Routes>
+          </main>
+        </div>
       </div>
     </Router>
   );
