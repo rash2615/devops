@@ -21,8 +21,13 @@ const taskSchema = new mongoose.Schema({
     default: 'medium'
   },
   assignee: {
-    type: String,
-    trim: true
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
   },
   dueDate: {
     type: Date
