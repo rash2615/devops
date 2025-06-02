@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: ${DOCKER_IMAGE_FRONTEND}:latest
+    ports:
+      - "80:80"
+    environment:
+      - NODE_ENV=production
+      - REACT_APP_API_URL=http://localhost:3000
+    depends_on:
+      - backend
+
+  backend:
+    image: ${DOCKER_IMAGE_BACKEND}:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongodb:27017/taskflow
+      - JWT_SECRET=your_jwt_secret
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:latest
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data: 
