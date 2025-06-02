@@ -1,10 +1,23 @@
 function Header() {
   return (
-    <header className="bg-white shadow">
-      <div className="container mx-auto px-4 py-6">
-        <h1 className="text-3xl font-bold text-gray-800">
-          Todo List
-        </h1>
+    <header className="glass-effect sticky top-0 z-50">
+      <div className="container mx-auto px-4 py-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              TaskFlow
+            </h1>
+            <span className="text-sm text-gray-500">Organisez vos tâches efficacement</span>
+          </div>
+          <div className="flex items-center space-x-4">
+            <button className="px-4 py-2 text-sm font-medium text-indigo-600 hover:text-indigo-800">
+              Connexion
+            </button>
+            <button className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors">
+              S'inscrire
+            </button>
+          </div>
+        </div>
       </div>
     </header>
   );
